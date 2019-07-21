@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+
+<h2>{{text}} records.</h2>
+<title>Search Results</title>
+
+{% block body %}
+<form method="POST">
+
+
+<style>
+table, th, td {
+   border: 1px solid black;
+}
+</style>
+<table style="width:100%">
+ <tr>
+   <th>INDEX</th>
+
+   <th>DOT Number</th>
+   <th>Legal Name</th>
+   <th>Address</th>
+   <th>Phone</th>
+   <th>Entity Type</th>
+   <th>Units</th>
+   <th>Drivers</th>
+
+   <th>Operation Classification</th>
+   <th>Carrier Operation</th>
+   <th>Cargo Carried</th>
+ </tr>
+{% for contact in contacts %}
+ <tr>
+   <td>{{forloop.counter}}</td>
+   <td>{{ contact.DOT_Number}}</td>
+   <td><a href="https://safer.fmcsa.dot.gov/keywordx.asp?searchstring={{ contact.Legal_Name| cut:"Legal Name:"}}">
+   {{ contact.Legal_Name| cut:"Legal Name:"}}</a></td>
+   <td>{{ contact.Physical_adress }}</td>
+   <td><a href="ciscotel:1{% spaceless %}{{contact.Phone|cut:" "}}{% endspaceless %}" target="_self">{% spaceless %}{{contact.Phone|cut:" "}}{% endspaceless %}</a></td>
+   <td>{{ contact.Entity_Type}}</td>
+   <td>{{ contact.Units }}</td>
+   <td>{{ contact.Drivers }} </td>
+   <td>
+   {% if contact.For_Hire == "X" %}
+   Auth. For Hire<br/>
+   {% endif %}
+
+   {%if contact.Exempt_For_Hire == "X" %}
+   Exempt For Hire
+   {% endif %}
+
+   {%if contact.Private_Property == "X" %}
+   Private(Property)<br/>
+   {% endif %}
+
+   {%if contact.Priv_Pass == "X" %}
+   Priv. Pass. (Business)<br/>
+   {% endif %}
+
+   {%if contact.Priv_Pass_Non == "X" %}
+   Priv. Pass.(Non-business)<br/>
+   {% endif %}
+
+   {%if contact.Migrant  == "X"%}
+   Migrant<br/>
+   {% endif %}
+
+   {%if contact.US_Mail  == "X"%}
+   U.S. Mail<br/>
+   {% endif %}
+
+   {%if contact.Fed_Gov  == "X"%}
+   Fed. Gov't<br/>
+   {% endif %}
+
+   {%if contact.State_Gov == "X"%}
+   State Gov't<br/>
+   {% endif %}
+
+   {%if contact.Local_Gov == "X"%}
+   Local Gov't<br/>
+   {% endif %}
+
+   {%if contact.Indian_Nation == "X"%}
+   Indian Nation<br/>
+   {% endif %}
+ </td>
+<td>
+    {%if contact.Interstate == "X"%}
+    Interstate<br />
+    {% endif %}
+
+    {%if contact.Intrastate_Only_HM == "X"%}
+    Intrastate Only (HM)<br />
+    {% endif %}
+
+    {%if contact.Intrastate_NonHM == "X"%}
+    Intrastate Only (Non-HM)<br />
+    {% endif %}
+</td>
+
+    <td>
+
+
+   {% if contact.General_Freight == "X" %}
+   <li>General Freight</li>
+ {% endif %}
+   {% if contact.Household_Goods == "X" %}
+   <li>Household Goods</li>
+{% endif %}
+   {% if contact.Metal_sheets_coils_rolls == "X" %}
+   <li>Metal: sheets, coils, rolls</li>
+{% endif %}
+   {% if contact.Motor_Vehicles == "X" %}
+   <li>Motor Vehicles</li>
+{% endif %}
+   {% if contact.DriveTow_away == "X" %}
+   <li>Drive/Tow away</li>
+{% endif %}
+   {% if contact.Logs_Poles_Beams_Lumber == "X" %}
+   <li>Logs, Poles, Beams, Lumber</li>
+{% endif %}
+   {% if contact.Building_Materials == "X" %}
+   <li>Building Materials</li>
+{% endif %}
+   {% if contact.Mobile_Homes == "X" %}
+   <li>Mobile Homes</li>
+{% endif %}
+   {% if contact.Machinery_Large_Objects == "X" %}
+   <li>Machinery, Large Objects</li>
+{% endif %}
+   {% if contact.Fresh_Produce == "X" %}
+   <li>Fresh Produce</li>
+{% endif %}
+   {% if contact.LiquidsGases == "X" %}
+   <li>Liquids/Gases</li>
+{% endif %}
+   {% if contact.Intermodal_Cont == "X" %}
+   <li>Intermodal Cont.</li>
+{% endif %}
+   {% if contact.Passengers == "X" %}
+   <li>Passengers</li>
+{% endif %}
+   {% if contact.Oilfield_Equipment == "X" %}
+   <li>Oilfield Equipment</li>
+{% endif %}
+   {% if contact.Livestock == "X" %}
+   <li>Livestock</li>
+{% endif %}
+   {% if contact.Grain_Feed_Hay == "X" %}
+   <li>Grain, Feed, Hay</li>
+{% endif %}
+   {% if contact.CoalCoke == "X" %}
+   <li>Coal/Coke</li>
+{% endif %}
+   {% if contact.Meat == "X" %}
+<li>Meat</li>
+{% endif %}
+   {% if contact.GarbageRefuse == "X" %}
+   <li>Garbage/Refuse</li>
+{% endif %}
+   {% if contact.Chemicals == "X" %}
+<li>Chemicals</li>
+{% endif %}
+   {% if contact.Commodities_Dry_Bulk == "X" %}
+   <li>Commodities Dry Bulk</li>
+{% endif %}
+   {% if contact.Refrigerated_Food == "X" %}
+   <li>Refrigerated Food</li>
+{% endif %}
+   {% if contact.Beverages == "X" %}
+   <li>Beverages</li>
+{% endif %}
+   {% if contact.Paper_Products == "X" %}
+   <li>Paper Products</li>
+{% endif %}
+   {% if contact.Utilities == "X" %}
+   <li>Utilities</li>
+{% endif %}
+   {% if contact.AgriculturalFarm_Supplies == "X" %}
+   <li>Agricultural/Farm Supplies</li>
+{% endif %}
+   {% if contact.Construction == "X" %}
+<li>Construction</li>
+{% endif %}
+   {% if contact.Water_Well == "X" %}
+   <li>Water Well</li>
+{% endif %}
+</td>
+
+ </tr>
+{% endfor %}
+</table>
+
+<div onclick="this.disabled=true;" class="pagination">
+    <span onclick="this.disabled=true;" class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a onclick="this.disabled=true;" href="?page={{ contacts.next_page_number }}">next</a>
+
+            <a onclick="this.disabled=true;" href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

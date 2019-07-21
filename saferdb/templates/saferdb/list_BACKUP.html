@@ -1,0 +1,138 @@
+<form method="post">
+
+<h2>{{text}} records.</h2>
+<title>Search Results</title>
+</form>
+<style>
+table, th, td {
+   border: 1px solid black;
+}
+</style>
+<table style="width:100%">
+ <tr>
+   <th>INDEX</th>
+
+   <th>DOT Number</th>
+   <th>Legal Name</th>
+   <th>Address</th>
+   <th>Phone</th>
+   <th>Entity Type</th>
+   <th>Units</th>
+   <th>Drivers</th>
+   <th>For Hire</th>
+   <th>Exempt For Hire</th>
+   <th>Private Property</th>
+   <th>Priv Pass</th>
+   <th>Priv Pass Non</th>
+   <th>Migrant</th>
+   <th>US Mail</th>
+   <th>Fed Gov</th>
+   <th>State Gov</th>
+   <th>Local Gov</th>
+   <th>Indian Nation</th>
+   <th>Interstate</th>
+   <th>Intrastate Only HM</th>
+   <th>Intrastate NonHM</th>
+   <th>General Freight</th>
+   <th>Household Goods</th>
+   <th>Metal sheets coils rolls</th>
+   <th>Motor Vehicles</th>
+   <th>DriveTow away</th>
+   <th>Logs Poles Beams Lumber</th>
+   <th>Building Materials</th>
+   <th>Mobile Homes</th>
+   <th>Machinery Large Objects</th>
+   <th>Fresh Produce</th>
+   <th>LiquidsGases</th>
+   <th>Intermodal Cont</th>
+   <th>Passengers</th>
+   <th>Oilfield Equipment</th>
+   <th>Livestock</th>
+   <th>Grain Feed Hay</th>
+   <th>CoalCoke</th>
+   <th>Meat</th>
+   <th>GarbageRefuse</th>
+   <th>Chemicals</th>
+   <th>Commodities Dry Bulk</th>
+   <th>Refrigerated Food</th>
+   <th>Beverages</th>
+   <th>Paper Products</th>
+   <th>Utilities</th>
+   <th>AgriculturalFarm Supplies</th>
+   <th>Construction</th>
+   <th>Water Well</th>
+ </tr>
+{% for contact in contacts %}
+ <tr>
+   <td>{{forloop.counter}}</td>
+   <td>{{ contact.DOT_Number}}</td>
+   <td><a href="https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=434905&original_query_string={{ contact.Legal_Name| cut:"Legal Name:"}}">
+   {{ contact.Legal_Name| cut:"Legal Name:"}}</a></td>
+   <td>{{ contact.Address }}</td>
+   <td><a href="ciscotel:1{% spaceless %}{{contact.Phone|cut:" "}}{% endspaceless %}" target="_self">{% spaceless %}{{contact.Phone|cut:" "}}{% endspaceless %}</a></td>
+   <td>{{ contact.Entity_Type}}</td>
+   <td>{{ contact.Units }}</td>
+   <td>{{ contact.Drivers }} </td>
+   <td>{{ contact.For_Hire }} </td>
+   <td>{{ contact.Exempt_For_Hire }} </td>
+   <td>{{ contact.Private_Property }} </td>
+   <td>{{ contact.Priv_Pass }} </td>
+   <td>{{ contact.Priv_Pass_Non }} </td>
+   <td>{{ contact.Migrant }} </td>
+   <td>{{ contact.US_Mail }} </td>
+   <td>{{ contact.Fed_Gov }} </td>
+   <td>{{ contact.State_Gov }} </td>
+   <td>{{ contact.Local_Gov }} </td>
+   <td>{{ contact.Indian_Nation }} </td>
+   <td>{{ contact.Interstate }} </td>
+   <td>{{ contact.Intrastate_Only_HM }} </td>
+   <td>{{ contact.Intrastate_NonHM }} </td>
+   <td>{{ contact.General_Freight }} </td>
+   <td>{{ contact.Household_Goods }} </td>
+   <td>{{ contact.Metal_sheets_coils_rolls }} </td>
+   <td>{{ contact.Motor_Vehicles }} </td>
+   <td>{{ contact.DriveTow_away }} </td>
+   <td>{{ contact.Logs_Poles_Beams_Lumber }} </td>
+   <td>{{ contact.Building_Materials }} </td>
+   <td>{{ contact.Mobile_Homes }} </td>
+   <td>{{ contact.Machinery_Large_Objects }} </td>
+   <td>{{ contact.Fresh_Produce }} </td>
+   <td>{{ contact.LiquidsGases }} </td>
+   <td>{{ contact.Intermodal_Cont }} </td>
+   <td>{{ contact.Passengers }} </td>
+   <td>{{ contact.Oilfield_Equipment }} </td>
+   <td>{{ contact.Livestock }} </td>
+   <td>{{ contact.Grain_Feed_Hay }} </td>
+   <td>{{ contact.CoalCoke }} </td>
+   <td>{{ contact.Meat }} </td>
+   <td>{{ contact.GarbageRefuse }} </td>
+   <td>{{ contact.Chemicals }} </td>
+   <td>{{ contact.Commodities_Dry_Bulk }} </td>
+   <td>{{ contact.Refrigerated_Food }} </td>
+   <td>{{ contact.Beverages }} </td>
+   <td>{{ contact.Paper_Products }} </td>
+   <td>{{ contact.Utilities }} </td>
+   <td>{{ contact.AgriculturalFarm_Supplies }} </td>
+   <td>{{ contact.Construction }} </td>
+   <td>{{ contact.Water_Well }} </td>
+ </tr>
+{% endfor %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+            <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>

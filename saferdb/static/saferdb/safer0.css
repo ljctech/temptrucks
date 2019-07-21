@@ -1,0 +1,108 @@
+A:link      	{ color : navy ; text-decoration : underline   }
+A:active    	{ color : black ; text-decoration : underline  }
+A:visited   	{ color : navy ; text-decoration : underline   }
+A:hover   	{ color : gray ; text-decoration : underline   }
+body          { margin: 5px 10px 5px 10px; font-family:arial; font-size:10pt }
+
+/* following copied from old 'styles.css' file */
+
+.menumain {
+text-decoration: none;
+color: #0000c0;
+font: x-small/110% arial;
+}
+
+.querylabelbkg {
+background: #c0e0ff;
+vertical-align: top;
+color: black;
+font: bold x-small arial;
+}
+
+.querylabel {
+text-decoration: none;
+color: #000000;
+font: bold x-small arial;
+}
+
+.queryfield {
+color: #0000c0;
+font: bold x-small arial;
+}
+
+.normaltext {
+color: #000000;
+font: x-small arial;
+}
+
+.normallink {
+color: #0000C0;
+font: x-small arial;
+}
+
+.menumain {
+text-decoration: none;
+color: #0000c0;
+font: x-small/110% arial;
+}
+
+.headertext {
+color: #000000;
+font: bold small arial;
+}
+
+.hidden
+{
+position:absolute;
+left:0px;
+top:-500px;
+width:1px;
+height:1px;
+overflow:hidden;
+}
+
+/* footer text */
+
+
+/*footer new */
+#footerbox {
+background-color:#FFFFFF;
+border-bottom-color:white;
+border-top:1px solid #D9D9D9;
+padding:10px 0px 0 0;
+width:960px;
+}
+#nestedbox {
+background:url("/images/logo_footer.gif") no-repeat scroll 20px 40% #FFFFFF;
+border-right:1px solid #D9D9D9;
+float:left;
+height:60px;
+margin:0px 0px 0px 0;
+overflow:hidden;
+padding:0px 0px 0px 0;
+
+width:100px;
+}
+#footerbox a:link {
+color:#666666;
+text-decoration:none;
+}
+#footerbox a:hover {
+color:#012555;
+text-decoration:underline;
+}
+#footerbox a:visited {
+color:#666666;
+text-decoration:none;
+}
+#footerbox a:active {
+color:#666666;
+}
+#footerbox p {
+color:#5A5A5A;
+font:11px Arial,Helvetica,sans-serif;
+}
+
+#qreslut {
+  color:blue;
+}

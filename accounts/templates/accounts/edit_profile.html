@@ -1,0 +1,26 @@
+<script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+<script type="text/javascript">
+  $("#id_password").remove();
+
+</script>
+<title>Profile</title>
+{% block body %}
+<div class="container">
+<form method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit" >Submit</button>
+
+</form>
+<a href="{% url 'accounts:cancel_subscription' %}">Cancell Subscription</a>
+
+
+
+</div>
+
+
+{% endblock %}

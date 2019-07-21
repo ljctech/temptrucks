@@ -1,0 +1,6 @@
+
+
+virtualenv myprojectenv && source myprojectenv/bin/activate
+pip install django==2.0.7 gunicorn psycopg2-binary django-debug-toolbar stripe celery
+
+sudo systemctl restart gunicorn.socket 

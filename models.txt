@@ -1,0 +1,244 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
+from django.db import models
+
+
+class AccountsUserprofile(models.Model):
+    email = models.CharField(max_length=254)
+    user = models.ForeignKey('AuthUser', models.DO_NOTHING, unique=True)
+    stripe_id = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'accounts_userprofile'
+
+
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=80)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
+
+
+class AuthGroupPermissions(models.Model):
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
+
+
+class AuthPermission(models.Model):
+    name = models.CharField(max_length=255)
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    codename = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
+
+
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.BooleanField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
+class AuthUserGroups(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
+
+
+class AuthUserUserPermissions(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
+
+
+class DjangoAdminLog(models.Model):
+    action_time = models.DateTimeField()
+    object_id = models.TextField(blank=True, null=True)
+    object_repr = models.CharField(max_length=200)
+    action_flag = models.SmallIntegerField()
+    change_message = models.TextField()
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_admin_log'
+
+
+class DjangoContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
+
+
+class DjangoSession(models.Model):
+    session_key = models.CharField(primary_key=True, max_length=40)
+    session_data = models.TextField()
+    expire_date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_session'
+
+
+class SaferdbQuery(models.Model):
+    fields = models.CharField(max_length=200)
+
+    class Meta:
+        managed = False
+        db_table = 'saferdb_query'
+
+
+class SaferdbQuestion(models.Model):
+    dot_number = models.IntegerField(db_column='DOT_Number', primary_key=True)  # Field name made lowercase.
+    entity_type = models.CharField(db_column='Entity_Type', max_length=200)  # Field name made lowercase.
+    operating_status = models.CharField(db_column='Operating_Status', max_length=200)  # Field name made lowercase.
+    legal_name = models.CharField(db_column='Legal_Name', max_length=200)  # Field name made lowercase.
+    phone = models.CharField(db_column='Phone', max_length=15)  # Field name made lowercase.
+    mailing_address = models.CharField(db_column='Mailing_Address', max_length=200)  # Field name made lowercase.
+    mileage = models.CharField(db_column='Mileage', max_length=200)  # Field name made lowercase.
+    exempt_for_hire = models.CharField(db_column='Exempt_For_Hire', max_length=200)  # Field name made lowercase.
+    private_property = models.CharField(db_column='Private_Property', max_length=200)  # Field name made lowercase.
+    migrant = models.CharField(db_column='Migrant', max_length=200)  # Field name made lowercase.
+    fed_gov = models.CharField(db_column='Fed_Gov', max_length=200)  # Field name made lowercase.
+    state_gov = models.CharField(db_column='State_Gov', max_length=200)  # Field name made lowercase.
+    local_gov = models.CharField(db_column='Local_Gov', max_length=200)  # Field name made lowercase.
+    indian_nation = models.CharField(db_column='Indian_Nation', max_length=200)  # Field name made lowercase.
+    interstate = models.CharField(db_column='Interstate', max_length=200)  # Field name made lowercase.
+    intrastate_only_hm = models.CharField(db_column='Intrastate_Only_HM', max_length=200)  # Field name made lowercase.
+    intrastate_nonhm = models.CharField(db_column='Intrastate_NonHM', max_length=200)  # Field name made lowercase.
+    general_freight = models.CharField(db_column='General_Freight', max_length=200)  # Field name made lowercase.
+    household_goods = models.CharField(db_column='Household_Goods', max_length=200)  # Field name made lowercase.
+    metal_sheets_coils_rolls = models.CharField(db_column='Metal_sheets_coils_rolls', max_length=200)  # Field name made lowercase.
+    motor_vehicles = models.CharField(db_column='Motor_Vehicles', max_length=200)  # Field name made lowercase.
+    drivetow_away = models.CharField(db_column='DriveTow_away', max_length=200)  # Field name made lowercase.
+    logs_poles_beams_lumber = models.CharField(db_column='Logs_Poles_Beams_Lumber', max_length=200)  # Field name made lowercase.
+    building_materials = models.CharField(db_column='Building_Materials', max_length=200)  # Field name made lowercase.
+    mobile_homes = models.CharField(db_column='Mobile_Homes', max_length=200)  # Field name made lowercase.
+    machinery_large_objects = models.CharField(db_column='Machinery_Large_Objects', max_length=200)  # Field name made lowercase.
+    fresh_produce = models.CharField(db_column='Fresh_Produce', max_length=200)  # Field name made lowercase.
+    liquidsgases = models.CharField(db_column='LiquidsGases', max_length=200)  # Field name made lowercase.
+    intermodal_cont = models.CharField(db_column='Intermodal_Cont', max_length=200)  # Field name made lowercase.
+    passengers = models.CharField(db_column='Passengers', max_length=200)  # Field name made lowercase.
+    oilfield_equipment = models.CharField(db_column='Oilfield_Equipment', max_length=200)  # Field name made lowercase.
+    livestock = models.CharField(db_column='Livestock', max_length=200)  # Field name made lowercase.
+    grain_feed_hay = models.CharField(db_column='Grain_Feed_Hay', max_length=200)  # Field name made lowercase.
+    coalcoke = models.CharField(db_column='CoalCoke', max_length=200)  # Field name made lowercase.
+    meat = models.CharField(db_column='Meat', max_length=200)  # Field name made lowercase.
+    garbagerefuse = models.CharField(db_column='GarbageRefuse', max_length=200)  # Field name made lowercase.
+    us_mail = models.CharField(db_column='US_Mail', max_length=200)  # Field name made lowercase.
+    chemicals = models.CharField(db_column='Chemicals', max_length=200)  # Field name made lowercase.
+    commodities_dry_bulk = models.CharField(db_column='Commodities_Dry_Bulk', max_length=200)  # Field name made lowercase.
+    refrigerated_food = models.CharField(db_column='Refrigerated_Food', max_length=200)  # Field name made lowercase.
+    beverages = models.CharField(db_column='Beverages', max_length=200)  # Field name made lowercase.
+    paper_products = models.CharField(db_column='Paper_Products', max_length=200)  # Field name made lowercase.
+    utilities = models.CharField(db_column='Utilities', max_length=200)  # Field name made lowercase.
+    agriculturalfarm_supplies = models.CharField(db_column='AgriculturalFarm_Supplies', max_length=200)  # Field name made lowercase.
+    construction = models.CharField(db_column='Construction', max_length=200)  # Field name made lowercase.
+    water_well = models.CharField(db_column='Water_Well', max_length=200)  # Field name made lowercase.
+    auth_for_hire = models.CharField(db_column='Auth_For_Hire', max_length=200)  # Field name made lowercase.
+    city = models.CharField(db_column='City', max_length=200)  # Field name made lowercase.
+    dba_name = models.CharField(db_column='DBA_Name', max_length=200)  # Field name made lowercase.
+    dunsnumber = models.CharField(db_column='DUNSNumber', max_length=200)  # Field name made lowercase.
+    granite = models.CharField(db_column='Granite', max_length=200)  # Field name made lowercase.
+    mcmxffnumber = models.CharField(db_column='MCMXFFNumber', max_length=200)  # Field name made lowercase.
+    mcs150 = models.CharField(db_column='MCS150', max_length=200)  # Field name made lowercase.
+    out_of_service_date = models.CharField(db_column='Out_Of_Service_Date', max_length=200)  # Field name made lowercase.
+    physical_adress = models.CharField(db_column='Physical_adress', max_length=200)  # Field name made lowercase.
+    priv_pass_business = models.CharField(db_column='Priv_Pass_Business', max_length=200)  # Field name made lowercase.
+    priv_pass_non_business = models.CharField(db_column='Priv_Pass_Non_Business', max_length=200)  # Field name made lowercase.
+    state = models.CharField(db_column='State', max_length=5)  # Field name made lowercase.
+    statecarrieridnumber = models.CharField(db_column='StateCarrierIDNumber', max_length=200)  # Field name made lowercase.
+    us_mail_cargo = models.CharField(db_column='US_Mail_Cargo', max_length=200)  # Field name made lowercase.
+    zipcode = models.CharField(db_column='ZipCode', max_length=15)  # Field name made lowercase.
+    mcity = models.CharField(db_column='mCity', max_length=200)  # Field name made lowercase.
+    mstate = models.CharField(db_column='mState', max_length=5)  # Field name made lowercase.
+    mzipcode = models.CharField(db_column='mZipCode', max_length=15)  # Field name made lowercase.
+    driver_inspections = models.CharField(db_column='Driver_Inspections', max_length=200)  # Field name made lowercase.
+    driver_out_of_service = models.CharField(db_column='Driver_Out_of_service', max_length=200)  # Field name made lowercase.
+    driver_out_of_service_pecent = models.CharField(db_column='Driver_Out_of_service_pecent', max_length=200)  # Field name made lowercase.
+    driver_natl_average = models.CharField(db_column='Driver_natl_average', max_length=200)  # Field name made lowercase.
+    hazmat_inspections = models.CharField(db_column='Hazmat_Inspections', max_length=200)  # Field name made lowercase.
+    hazmat_out_of_service = models.CharField(db_column='Hazmat_Out_of_service', max_length=200)  # Field name made lowercase.
+    hazmat_out_of_service_pecent = models.CharField(db_column='Hazmat_Out_of_service_pecent', max_length=200)  # Field name made lowercase.
+    hazmat_natl_average = models.CharField(db_column='Hazmat_natl_average', max_length=200)  # Field name made lowercase.
+    iep_inspections = models.CharField(db_column='IEP_Inspections', max_length=200)  # Field name made lowercase.
+    iep_out_of_service = models.CharField(db_column='IEP_Out_of_service', max_length=200)  # Field name made lowercase.
+    iep_out_of_service_pecent = models.CharField(db_column='IEP_Out_of_service_pecent', max_length=200)  # Field name made lowercase.
+    iep_natl_average = models.CharField(db_column='IEP_natl_average', max_length=200)  # Field name made lowercase.
+    rating = models.CharField(db_column='Rating', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    rating_date = models.CharField(db_column='Rating_Date', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    review_date = models.CharField(db_column='Review_Date', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    type = models.CharField(db_column='Type', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    vehicle_inspections = models.CharField(db_column='Vehicle_Inspections', max_length=200)  # Field name made lowercase.
+    vehicle_out_of_service = models.CharField(db_column='Vehicle_Out_of_service', max_length=200)  # Field name made lowercase.
+    vehicle_out_of_service_pecent = models.CharField(db_column='Vehicle_Out_of_service_pecent', max_length=200)  # Field name made lowercase.
+    vehicle_natl_average = models.CharField(db_column='Vehicle_natl_average', max_length=200)  # Field name made lowercase.
+    ca_crashes_fatal = models.CharField(max_length=200, blank=True, null=True)
+    ca_crashes_injury = models.CharField(max_length=200, blank=True, null=True)
+    ca_crashes_total = models.CharField(max_length=200, blank=True, null=True)
+    ca_crashes_tow = models.CharField(max_length=200, blank=True, null=True)
+    ca_driver_inspections = models.CharField(db_column='ca_driver_Inspections', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ca_driver_out_of_service = models.CharField(db_column='ca_driver_Out_of_Service', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ca_driver_out_of_service_percent = models.CharField(db_column='ca_driver_Out_of_Service_Percent', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ca_vahicle_inspections = models.CharField(db_column='ca_vahicle_Inspections', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ca_vahicle_out_of_service = models.CharField(db_column='ca_vahicle_Out_of_Service', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ca_vahicle_out_of_service_percent = models.CharField(db_column='ca_vahicle_Out_of_Service_Percent', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    crashes_fatal = models.CharField(max_length=200)
+    crashes_injury = models.CharField(max_length=200)
+    crashes_tow = models.CharField(max_length=200)
+    special = models.CharField(max_length=200)
+    trcrashes_total = models.CharField(max_length=200)
+    drivers = models.IntegerField(db_column='Drivers', blank=True, null=True)  # Field name made lowercase.
+    units = models.IntegerField(db_column='Units', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'saferdb_question'

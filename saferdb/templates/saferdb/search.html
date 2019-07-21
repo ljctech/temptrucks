@@ -1,0 +1,117 @@
+
+<h2>{{text}} found records.</h2>
+<style>
+table, th, td {
+   border: 1px solid black;
+}
+</style>
+<table style="width:100%">
+ <tr>
+   <th>INDEX</th>
+
+   <th>DOT Number</th>
+   <th>Legal Name</th>
+   <th>Address</th>
+   <th>Phone</th>
+   <th>Entity Type</th>
+   <th>Units</th>
+   <th>Drivers</th>
+   <th>For Hire</th>
+   <th>Exempt For Hire</th>
+   <th>Private Property</th>
+   <th>Priv Pass</th>
+   <th>Priv Pass Non</th>
+   <th>Migrant</th>
+   <th>US Mail</th>
+   <th>Fed Gov</th>
+   <th>State Gov</th>
+   <th>Local Gov</th>
+   <th>Indian Nation</th>
+   <th>Interstate</th>
+   <th>Intrastate Only HM</th>
+   <th>Intrastate NonHM</th>
+   <th>General Freight</th>
+   <th>Household Goods</th>
+   <th>Metal sheets coils rolls</th>
+   <th>Motor Vehicles</th>
+   <th>DriveTow away</th>
+   <th>Logs Poles Beams Lumber</th>
+   <th>Building Materials</th>
+   <th>Mobile Homes</th>
+   <th>Machinery Large Objects</th>
+   <th>Fresh Produce</th>
+   <th>LiquidsGases</th>
+   <th>Intermodal Cont</th>
+   <th>Passengers</th>
+   <th>Oilfield Equipment</th>
+   <th>Livestock</th>
+   <th>Grain Feed Hay</th>
+   <th>CoalCoke</th>
+   <th>Meat</th>
+   <th>GarbageRefuse</th>
+   <th>Chemicals</th>
+   <th>Commodities Dry Bulk</th>
+   <th>Refrigerated Food</th>
+   <th>Beverages</th>
+   <th>Paper Products</th>
+   <th>Utilities</th>
+   <th>AgriculturalFarm Supplies</th>
+   <th>Construction</th>
+   <th>Water Well</th>
+ </tr>
+{% for question in q%}
+ <tr>
+   <td>{{forloop.counter}}</td>
+   <td>{{ question.DOT_Number}}</td>
+   <td><a href="https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=434905&original_query_string={{question.Legal_Name}}">
+   {{ question.Legal_Name|cut:"Legal Name:" }}</a></td>
+   <td>{{ question.Address }}</td>
+   <td><a href="ciscotel:1{{question.Phone|cut:" "}}" target="_self">{{question.Phone|cut:" "}}</a></td>
+   <td>{{ question.Entity_Type}}</td>
+   <td>{{ question.Units }}</td>
+   <td>{{ question.Drivers }} </td>
+   <td>{{ question.For_Hire }} </td>
+   <td>{{ question.Exempt_For_Hire }} </td>
+   <td>{{ question.Private_Property }} </td>
+   <td>{{ question.Priv_Pass }} </td>
+   <td>{{ question.Priv_Pass_Non }} </td>
+   <td>{{ question.Migrant }} </td>
+   <td>{{ question.US_Mail }} </td>
+   <td>{{ question.Fed_Gov }} </td>
+   <td>{{ question.State_Gov }} </td>
+   <td>{{ question.Local_Gov }} </td>
+   <td>{{ question.Indian_Nation }} </td>
+   <td>{{ question.Interstate }} </td>
+   <td>{{ question.Intrastate_Only_HM }} </td>
+   <td>{{ question.Intrastate_NonHM }} </td>
+   <td>{{ question.General_Freight }} </td>
+   <td>{{ question.Household_Goods }} </td>
+   <td>{{ question.Metal_sheets_coils_rolls }} </td>
+   <td>{{ question.Motor_Vehicles }} </td>
+   <td>{{ question.DriveTow_away }} </td>
+   <td>{{ question.Logs_Poles_Beams_Lumber }} </td>
+   <td>{{ question.Building_Materials }} </td>
+   <td>{{ question.Mobile_Homes }} </td>
+   <td>{{ question.Machinery_Large_Objects }} </td>
+   <td>{{ question.Fresh_Produce }} </td>
+   <td>{{ question.LiquidsGases }} </td>
+   <td>{{ question.Intermodal_Cont }} </td>
+   <td>{{ question.Passengers }} </td>
+   <td>{{ question.Oilfield_Equipment }} </td>
+   <td>{{ question.Livestock }} </td>
+   <td>{{ question.Grain_Feed_Hay }} </td>
+   <td>{{ question.CoalCoke }} </td>
+   <td>{{ question.Meat }} </td>
+   <td>{{ question.GarbageRefuse }} </td>
+   <td>{{ question.Chemicals }} </td>
+   <td>{{ question.Commodities_Dry_Bulk }} </td>
+   <td>{{ question.Refrigerated_Food }} </td>
+   <td>{{ question.Beverages }} </td>
+   <td>{{ question.Paper_Products }} </td>
+   <td>{{ question.Utilities }} </td>
+   <td>{{ question.AgriculturalFarm_Supplies }} </td>
+   <td>{{ question.Construction }} </td>
+   <td>{{ question.Water_Well }} </td>
+ </tr>
+{% endfor %}
+</table>

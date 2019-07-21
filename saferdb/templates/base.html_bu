@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  {% load static %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'saferdb/truck.png'%}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+{% block head %}
+{% endblock %}
+
+<body class="">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" href="/accounts/login/">USDotSearch</a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                  &#9776;
+              </button>
+      <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+        <ul class="nav navbar-nav">
+          <li class="nav-item"><a href="/saferdb/advanced" class="nav-link">Advance Search</a></li>
+          <li class="nav-item"><a href="/saferdb/about/" class="nav-link">About</a></li>
+          {% if user.is_authenticated %}
+          {%else%}
+          <li class="nav-item"><a href="/saferdb/demo/" class="nav-link">Demo</a></li>
+          {% endif %}
+
+          <li class="nav-item"><a href="/saferdb/help/" class="nav-link">HowTo</a></li>
+          <!-- <li class="nav-item"><a href="/saferdb/help/" class="nav-link">Service</a></li> -->
+          <li class="nav-item"><a href="/saferdb/faq/" class="nav-link">FAQ</a></li>
+        </ul>
+
+        {% if user.is_authenticated %}
+
+        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+          <li class="nav-item"><a href="{% url 'accounts:logout' %}" class="nav-link">Log Out</a></li>
+          <li class="nav-item"><a href="{% url 'accounts:edit_profile' %}" class="nav-link">Edit Profile</a></li>
+        </ul>
+      </div>
+      {%else%}
+      <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+        <li class="dropdown nav-item ">
+          <a type="" id="" data-toggle="dropdown" class="btn nav-link  dropdown-toggle">Login <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right mt-1">
+            <li class="p-3">
+                <a class="btn btn-primary" href="{% url 'accounts:login' %}">Login</a>
+                <a class="btn btn-primary" href="{% url 'accounts:register' %}">Register</a>
+                <div class="form-group text-xs-center">
+                  <small><a class="btn btn-primary" href="{% url 'accounts:reset_password' %}">Forgot password?</a></small>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    {% endif %}
+    </div>
+  </nav>
+  <div class=" mt-5 pt-5">
+
+    {% block body %}
+    {% endblock %}
+  </div>
+</body>
+<!-- JavaScript dependencies -->
+<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<script type="application/javascript" src="{% static 'saferdb/animate-in.js' %}"></script>
+<link rel="stylesheet" href="{% static 'saferdb/aquamarine.css' %}" type="text/css">
+
+<!-- <script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
+<!-- <script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script type="application/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> -->
+<!-- <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+<script>
+$(document).ready(function() {
+  $(document).ready(function() {
+    $(".navbar-header").parent().css("background-color", "#e1261c");
+    $(".navbar-collapse").css("background-color", "#e1261c");
+    $(".navbar-collapse").parent().css("background-color", "#e1261c");
+    $(".white_anchor").css("color", "white");
+    $(".pillars").css("background-color", "#e1261c");
+    $(".pillars").css("color", "white");
+  });
+});
+</script>
+
+</html>

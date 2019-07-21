@@ -1,0 +1,851 @@
+{% extends 'base.html' %}
+
+<title>Advanced Search</title>
+{% block body %}
+<form method="post">
+  {% csrf_token %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'saferdb/safer.css' %}" type="text/css">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <th SCOPE="" col="" class="queryfield" >
+      <tbody>
+        <tr>
+          <td align="CENTER">
+            <center>
+              <table border="1" width="70%" bordercolor="SILVER" cellspacing="0" cellpadding="4" summary="For formatting purpose">
+                <tbody>
+                  </tr>
+
+
+                  <table border="1" width="70%" bordercolor="SILVER" cellspacing="0" cellpadding="4" summary="For formatting purpose">
+                    <tbody>
+                      </tr>
+                      <tr>
+                        <th scope="ROW" class="querylabelbkg" align="right">Location:</th>
+                      </tr>
+                    <tr>
+
+                      <td class="queryfield" valign="top" colspan="3">
+                        Zip Code:<input type="text" name="opeclass"
+                        placeholder="Zip Code"
+                        onfocus="this.placeholder = ''"/>
+                        </input>
+
+                        <!-- City:<input type="text" name="opeclass"
+                        placeholder="City"
+                        onfocus="this.placeholder = ''"/>
+                        </input>
+
+
+                        State:<input type="text" name="opeclass"
+                        placeholder="State"
+                        onfocus="this.placeholder = ''"/>
+                        </input> -->
+                      </td>
+                      </tr>
+                      <tr>
+                        <!-- BEGIN: Carrier Operations -->
+                        <td colspan="4" class="querylabelbkg" valign="top">Carrier Operation:</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" align="center">
+                          <table border="0" cellpadding="2" cellspacing="0" summary="Carrier Operation">
+                            <tbody>
+                              <tr>
+                                <th scope="COL">
+                                  <div class="hidden">Carrier Operation</div>
+                                </th>
+                              </tr>
+                              <tr>
+                                <td width="32%" valign="top">
+                                  <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="COL">
+                                          <div class="hidden">SAFER Layout</div>
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <td width="5%" class="queryfield" >
+                                          <input type="checkbox" name="opeclass" value="interstate">
+                                        </input>
+                                        </td>
+
+                                        <td>
+                                          <font style="font-size:80%" face="arial">Interstate</font>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                                <td width="32%" valign="top">
+                                  <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="COL">
+                                          <div class="hidden">SAFER Layout</div>
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <td width="5%" class="queryfield">
+                                          <input type="checkbox" name="opeclass" value="intrastate_hm">
+                                        </input>
+                                        </td>
+                                        <td>
+                                          <font style="font-size:80%" face="arial">Intrastate Only (HM)</font>
+                                        </td>
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                                <td width="32%" valign="top">
+                                  <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="COL">
+                                          <div class="hidden">SAFER Layout</div>
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <td width="5%" class="queryfield">
+                                          <input type="checkbox" name="opeclass" value="intrastate_non_hm">
+                                        </input>
+                                        </td>
+                                        <td>
+                                          <font style="font-size:80%" face="arial">Intrastate Only (Non-HM)</font>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                  <tr>
+                    <!-- BEGIN: Operating Classification -->
+                    <td colspan="4" class="querylabelbkg">Operation Classification:</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" align="center">
+
+
+                      <table border="0" cellpadding="2" cellspacing="0" summary="Operation Classification">
+                        <tbody>
+
+                          <tr>
+                            <th scope="COL">
+                              <div class="hidden">Operation Classification</div>
+                            </th>
+                          </tr>
+                          <tr>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" width="5%" style="border: 1px solid greem; background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="auth_for_hire"></input>
+                                    </td>
+                                    <td class="queryfield" width="5%" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="auth_for_hire_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Auth. For Hire</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="exempt_for_hire">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="exempt_for_hire_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Exempt For Hire</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="privprop">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="privprop_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Private(Property)</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="privpass_buis">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="privpass_buis_exlude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Priv. Pass. (Business)</font>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" width="5%" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="pripass_non_buis">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" width="5%"style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="pripass_non_buis_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Priv. Pass.(Non-business)</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="migrant">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="migrant_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Migrant</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="us_mail">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="us_mail_exclude">
+                                    </input>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">U.S. Mail</font>
+                                    </td>
+                                  </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="fed_gov">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="border: 1px solid red; background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="fed_gov_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Fed. Gov't</font>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" width="5%" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="state_gov">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" width="5%" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="state_gov_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">State Gov't</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="local_gov">
+                                    </input>
+                                    </td>
+                                      <td class="queryfield" style="background-color: red;">
+                                        <input type="checkbox" name="opeclass" value="local_gov_exclude">
+                                      </input>
+                                      </td>
+                                      <td>
+                                        <font style="font-size:80%" face="arial">Local Gov't</font>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="indian_nation">
+                                    </input>
+                                    </td>
+                                      <td class="queryfield" style="background-color: red;">
+                                        <input type="checkbox" name="opeclass" value="indian_nation_exclude">
+                                      </input>
+                                      <td>
+                                        <font style="font-size:80%" face="arial">Indian Nation</font>
+                                      </td>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield"></td>
+                                    <td class="queryfield"></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- BEGIN: Carrier Operations -->
+                    <td colspan="4" class="querylabelbkg" valign="top">Carrier Operation:</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" align="center">
+                      <table border="0" cellpadding="2" cellspacing="0" summary="Carrier Operation">
+                        <tbody>
+                          <tr>
+                            <th scope="COL">
+                              <div class="hidden">Carrier Operation</div>
+                            </th>
+                          </tr>
+                          <tr>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td width="5%" class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="interstate">
+                                    </input>
+                                    </td>
+                                    <td width="5%" class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="interstate_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Interstate</font>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td width="5%" class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="intrastate_hm">
+                                    </input>
+                                    </td>
+                                  </td>
+                                  <td width="5%" class="queryfield" style=" background-color: red;">
+                                    <input type="checkbox" name="opeclass" value="intrastate_hm_exclude">
+                                  </input>
+                                </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Intrastate Only (HM)</font>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td width="5%" class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="intrastate_non_hm">
+                                    </input>
+                                    </td>
+                                      <td width="5%" class="queryfield" style=" background-color: red;">
+                                        <input type="checkbox" name="opeclass" value="intrastate_non_hm_exclude" >
+                                      </input>
+                                      </td>
+                                      <td>
+                                        <font style="font-size:80%" face="arial">Intrastate Only (Non-HM)</font>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- BEGIN: Shipper Operations -->
+
+                  </tr>
+                  <tr>
+                    <!-- BEGIN: Cargo Carried -->
+                    <td colspan="4" class="querylabelbkg" valign="top">Cargo Carried:</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" align="center">
+
+                      <table border="0" cellpadding="2" cellspacing="0" summary="Cargo Carried">
+                        <tbody>
+                          <tr>
+                            <th scope="COL">
+                              <div class="hidden">Cargo Carried</div>
+                            </th>
+                          </tr>
+                          <tr>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td width="5%" class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="gen_freight"/>
+                                    </td>
+                                    <td width="5%" class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="gen_freight_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">General Freight</font>
+                                    </td>
+
+                                    <td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="houshold_goods">
+                                    </td>
+                                      <td class="queryfield" style="background-color: red;">
+                                        <input type="checkbox" name="opeclass" value="houshold_goods_exlude">
+                                      </td>
+                                      <td>
+                                        <font style="font-size:80%" face="arial">Household Goods</font>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="metal"></input>
+                                    </td>
+                                      <td class="queryfield" style=" background-color: red;">
+                                        <input type="checkbox" name="opeclass" value="metal_exclude"></input>
+                                      </td>
+                                      <td>
+                                        <font style="font-size:80%" face="arial">Metal: sheets, coils, rolls</font>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="motor_veh">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="motor_veh_exclude">
+                                    </input>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Motor Vehicles</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" nam="openclass" vlaue="tow_away">
+                                    </input></td>
+                                  <td class="queryfield" style=" background-color: red;">
+                                    <input type="checkbox" nam="openclass" vlaue="tow_away_exclude">
+                                  </input>
+                                  <td>
+                                    <font style="font-size:80%" face="arial">Drive/Tow away</font>
+                                  </td>
+                                </td>
+                              </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                    <input type="checkbox" name="opeclass" value="log_poles_lumber">
+                                  </input>
+                                </td>
+                                    <td class="queryfield" style=" background-color: red">
+                                    <input type="checkbox" name="opeclass" value="log_poles_lumber_exclude">
+                                  </input>
+                                  <td>
+                                    <font style="font-size:80%" face="arial">Logs, Poles, Beams, Lumber</font>
+                                  </td>
+                                </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield"style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="BuildingMat">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="BuildingMat_exclude">
+                                    </input>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Building Materials</font>
+                                    </td>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="MobileHome">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="MobileHome_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Mobile Homes</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style=" background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Machinery">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style=" background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Machinery_exclude">
+                                    </input>
+                                  </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Machinery, Large Objects</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Produce">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Produce_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Fresh Produce</font>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td width="5%" class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="LiquidGases">
+                                    </input>
+                                    </td>
+                                    <td width="5%" class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="LiquidGases_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Liquids/Gases</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Intermodal">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Intermodal_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Intermodal Cont.</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Passengers">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Passengers_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Passengers</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Oilfield Equipment">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Oilfield Equipment_excludde">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Oilfield Equipment</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Livestock">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Livestock_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Livestock</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="grain">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="grain_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Grain, Feed, Hay</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Coal">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Coal_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Coal/Coke</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Meat">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Meat_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Meat</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Garbage">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Garbage_exclude">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Garbage/Refuse</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="UsMail">
+                                    </input>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="UsMail_mail">
+                                    </input>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">US Mail</font>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="32%" valign="top">
+                              <table border="0" cellpadding="2" cellspacing="0" summary="For formatting purpose">
+                                <tbody>
+                                  <tr>
+                                    <th scope="COL">
+                                      <div class="hidden">SAFER Layout</div>
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <td width="5%" class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Chemicals"/>
+                                    </td>
+                                    <td width="5%" class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Chemicals_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Chemicals</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Commodities"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Commodities_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Commodities Dry Bulk</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Refrigerated"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Refrigerated_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Refrigerated Food</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Beverages"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Beverages_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Beverages</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="paper"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="paper_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Paper Products</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Utilities"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Utilities_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Utilities</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Agricultural"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Agricultural_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Agricultural/Farm Supplies</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Construction"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Construction_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Construction</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="Water Well"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="Water Well_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Water Well</font>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="queryfield" style="background-color: green;">
+                                      <input type="checkbox" name="opeclass" value="GRANITE"/>
+                                    </td>
+                                    <td class="queryfield" style="background-color: red;">
+                                      <input type="checkbox" name="opeclass" value="GRANITE_exclude"/>
+                                    </td>
+                                    <td>
+                                      <font style="font-size:80%" face="arial">Granite</font></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="checkbox" name="opeclass" value="to_csv">SAVE TO EXCELL</button>
+              <button type="submit">Search</button>
+            </center>
+          </td>
+        </tr>
+      </tbody>
+</table>
+</form>
+{% endblock %}

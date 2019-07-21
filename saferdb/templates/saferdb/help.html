@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="container">
+  <h3>
+  Why call people who don't meet underwriting guidelines.
+  </h3>
+<div class="row">
+
+  <!-- first picture -->
+  <div class="col-4">
+  <p>Discover truckers registered with the DOT with:
+    <ul>
+    <li>In Zip 01821</li>
+ <li>Intrastate Non Hazardous Materials</li>
+ <li>Carying:</li>
+ <ul>
+      <li>Meat</li>
+      <li>Refrigerated Food</li>
+       <li>Beverages</li>
+       <li>Paper Products</li>
+     </ul>
+    </ul>
+     </p>
+</div>
+  <div class="col-8">
+    <img class="img-responsive mx-auto d-block border border-primary" src="https://i.imgur.com/jy8hhLw.jpg" width="75%" height="75%" data-toggle="modal" data-target=".search-modal">
+  </div>
+
+    <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <img class="img-responsive mx-auto d-block" src="https://i.imgur.com/jy8hhLw.jpg">
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- box 2 -->
+<div class="row">
+
+  <div class="col-8">
+    <img class="img-responsive mx-auto d-block border border-primary" src="https://i.imgur.com/IreDrlm.png" width="75%" height="75%" data-toggle="modal" data-target=".result-modal">
+    <div class="modal fade result-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <img class="img-responsive mx-auto d-block" src="https://i.imgur.com/IreDrlm.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="col-4">
+
+<p>Click Search to have your search results.
+<ul>
+  <li>Names are links to the SAFER site.</li>
+  <li>Click the phone number link to call with your Cisco Phone.</li>
+</ul>
+   </p>
+</div>
+</div>
+
+<!-- box 3
+--excel result
+-->
+
+
+<div class="row">
+  <div class="col-4">
+
+  <p>Click Save to Excell to get a ECRM compatible Excell spreadsheet:
+    <ul>
+      <li>Laser targeted underwriting optemized calling list</li>
+      <ul>
+      </ul>
+      <li>Create a mailing marketing campaign</li>
+      <li>Downloaded list will have more information including </li>
+
+    </ul>
+     </p>
+</div>
+  <div class="col-8">
+    <img class="img-responsive mx-auto d-block border border-primary" src="https://i.imgur.com/5bl3dmK.png" width="75%" height="75%" data-toggle="modal" data-target=".excel-modal">
+  </div>
+
+    <div class="modal fade excel-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <img class="img-responsive mx-auto d-block" src="https://i.imgur.com/5bl3dmK.png">
+        </div>
+      </div>
+    </div>
+</div>
+
+<p>Please feel free to email your questions to: <a href="mailto:Trucks@trucksearch.us" target="_top">Trucks@trucksearch.us</a> You can also call at: (347) 450-8119</p>
+</div><!-- container -->
+{% endblock %}
